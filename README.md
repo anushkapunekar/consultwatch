@@ -14,49 +14,64 @@ ConsultWatch is a live AI agent that analyzes HR consultation transcripts and ge
 - **Candidate experience summary**
 - **Consultant trend** indicator
 
-Powered by **Anthropic Claude claude-sonnet-4-20250514**.
+Powered by **Groq · LLaMA 3.3 70B** (free API).
+
+>  **Note:** This is a proof-of-concept prototype built to demonstrate the core AI analysis pipeline. It is not the full production system. The complete JSO integration would use AWS Lambda, SQS, DynamoDB, and EventBridge as described in the assignment architecture.
 
 ---
 
-## Deploy to Vercel (5 minutes)
+## Live Demo
 
-### Option 1: Vercel CLI
-```bash
-npm install -g vercel
-cd consulwatch
-npm install
-vercel --prod
-```
+ **https://consulwatch-kl-59df0e.netlify.app**
 
-### Option 2: GitHub + Vercel Dashboard
-1. Push this folder to a GitHub repo
-2. Go to [vercel.com](https://vercel.com) → New Project → Import your repo
-3. Vercel auto-detects Vite. Hit **Deploy**.
-4. Done — live URL in ~60 seconds.
+**How to use:**
+1. Go to [console.groq.com](https://console.groq.com) → Sign up free with Google
+2. Click **API Keys** → **Create API Key** → Copy it (starts with `gsk_...`)
+3. Paste the key into the app
+4. Click **Load Sample** to fill in a demo transcript
+5. Click **Analyze Session**
+6. View the full quality report 
+
+> Your API key is never stored — it's sent directly from your browser to Groq's API.
 
 ---
 
-## Run locally
+## Run Locally
+
 ```bash
 npm install
 npm run dev
 # Open http://localhost:5173
 ```
 
+**Prerequisites:** Node.js v18+ → download at [nodejs.org](https://nodejs.org)
+
 ---
 
-## Usage
-1. Enter your Anthropic API key (get one at console.anthropic.com)
-2. Paste or use the sample consultation transcript
-3. Click **Analyze Session**
-4. View the full quality report
+## Deploy to Netlify
 
-> Your API key is never stored — it's sent directly from your browser to Anthropic's API.
+1. Push this folder to a GitHub repo
+2. Go to [netlify.com](https://netlify.com) → **Add new site** → **Import from Git**
+3. Set **Build command:** `npm run build`
+4. Set **Publish directory:** `dist`
+5. Click **Deploy site**
+6. Done — live URL in ~60 seconds 
 
 ---
 
 ## Tech Stack
+
 - React 18 + Vite
-- Anthropic Claude claude-sonnet-4-20250514 (via direct API call)
+- Groq API · LLaMA 3.3 70B (via direct browser API call)
 - Zero backend — fully client-side
-- Deployable to Vercel in one command
+- Deployed on Netlify
+
+---
+
+## Assignment Context
+
+This prototype was built as part of the **JSO Phase-2: Agentic Career Intelligence Development** assignment by Aariyatech Corp Private Limited.
+
+The agent addresses the core Part B task: designing an AI agent that monitors HR consultations and analyzes conversation tone, professionalism, and candidate engagement on the JSO HR Dashboard.
+
+**GitHub:** [github.com/anushkapunekar/consulwatch](https://github.com/anushkapunekar/consulwatch)
